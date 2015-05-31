@@ -1,5 +1,19 @@
+function toRadians (angle) {
+  return angle * (Math.PI / 180);
+}
+
+function polarToCartesian (radius, degrees) {
+  var x = radius * Math.cos(toRadians(degrees));
+  var y = radius * Math.sin(toRadians(degrees));
+  return { x : x, y : y};
+}
 
 $(window).load(function () {
+
+  var centerCoords = { 
+    x: $(window).width() / 2, 
+    y: $(window).height() / 2
+  };
 
   var audio = new Audio('./media/just-say-nothing.mp3');
   // var audio = new Audio('./media/house.mp3');
@@ -20,12 +34,18 @@ $(window).load(function () {
   for (var i = 0; i < spectrumLength; i++) {
     $barContainer = $('<div class="bar-container"></div>');
     $bar = $('<div class="bar"></div>');
-    $('#spectrum').append($barContainer);
+    var degrees = ((i + 1) / spectrumLength) * 360;
+    $('body').append($barContainer);
+    console.log(degrees)
+    var coords = polarToCartesian(200, degrees);
+    $barContainer.css({
+      top: centerCoords.y + coords.y,
+      left: centerCoords.x + coords.x
+    });
     $barContainer.append($bar);
-    // var degrees = ((i + 1) / spectrumLength) * 5000;
-    // $barContainer.css({
-    //   "webkit-transform" : 'rotate(' + degrees + 'deg)'
-    // });
+    $barContainer.css({
+      "webkit-transform" : 'rotate(' + degrees + 'deg)'
+    });
   }
   
   var context = new AudioContext();
