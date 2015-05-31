@@ -9,7 +9,10 @@ $(window).load(function () {
     return sum;
   }
 
-  var audio = new Audio('./media/just-say-nothing.mp3');
+  // var audio = new Audio('./media/just-say-nothing.mp3');
+  // var audio = new Audio('./media/house.mp3');
+  var audio = new Audio('./media/concrete.mp3');
+  // var audio = new Audio('./media/change.mp3');
 
   $(document).on('keyup', function (e) {
     if (e.keyCode === 13) {
@@ -20,6 +23,22 @@ $(window).load(function () {
       }
     }
   });
+
+
+  var meowcount = 0;
+  var meow = setInterval(function () {
+    meowcount++;
+    if (meowcount % 2 === 0) {
+      $('body').css({
+        "background" : "white"
+      });
+    } else {
+      $('body').css({
+        "background" : "black"
+      });
+    }
+  }, 10);
+
 
   var spectrumLength = 1024 / 2;
   for (var i = 0; i < spectrumLength; i++) {
