@@ -1,13 +1,3 @@
-function toRadians (angle) {
-  return angle * (Math.PI / 180);
-}
-
-function polarToCartesian (radius, degrees) {
-  var x = radius * Math.cos(toRadians(degrees));
-  var y = radius * Math.sin(toRadians(degrees));
-  return { x : x, y : y};
-}
-
 $(window).load(function () {
 
   var centerCoords = { 
@@ -16,17 +6,10 @@ $(window).load(function () {
   };
 
   var audio = new Audio('./media/just-say-nothing.mp3');
-  // var audio = new Audio('./media/house.mp3');
-  // var audio = new Audio('./media/concrete.mp3');
-  // var audio = new Audio('./media/change.mp3');
 
   $(document).on('keyup', function (e) {
     if (e.keyCode === 13) {
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
+      audio.paused ? audio.play() : audio.pause();
     }
   });
 
@@ -36,15 +19,14 @@ $(window).load(function () {
     $bar = $('<div class="bar"></div>');
     var degrees = ((i + 1) / spectrumLength) * 360;
     $('body').append($barContainer);
-    console.log(degrees)
     var coords = polarToCartesian(200, degrees);
     $barContainer.css({
-      top: centerCoords.y + coords.y,
+      top: centerCoords.y + coords.y - 50,
       left: centerCoords.x + coords.x
     });
     $barContainer.append($bar);
     $barContainer.css({
-      "webkit-transform" : 'rotate(' + degrees + 'deg)'
+      "webkit-transform" : 'rotate(-' + degrees + 'deg)'
     });
   }
   
@@ -59,7 +41,12 @@ $(window).load(function () {
   var frequencyData = new Uint8Array(spectrumLength);
   var $bars = $('.bar');
   var interval = setInterval(function() {
-    analyser.getByteFrequencyData(frequencyData);
+    analyser.getByteFrequencyData((frequencyData));
+    var newSum = sumElementsIn(frequencyData) / spectrumLength;
+    console.log(newSum / 255)
+    $('#metronome').css({
+      opacity : newSum / 255 + 0.2
+    })
     $bars.each(function (index, bar) {
       var $bar = $(bar);
       var amplitude = frequencyData[index];
