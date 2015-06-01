@@ -6,7 +6,7 @@ html, body {
 
 .bar-container {
   position: absolute;
-  width: 2px;
+  width: 1px;
   height: 100px;
 }
 
@@ -17,7 +17,7 @@ html, body {
   height: 100%;
 }
 
-#metronome {
+#outer-metronome {
   position: relative;
   margin: 0 auto;
   top: 50%;

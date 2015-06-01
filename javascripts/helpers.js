@@ -8,10 +8,10 @@ function polarToCartesian (radius, degrees) {
   return { x : x, y : y};
 }
 
-function sumElementsIn (array) {
+function averageOf (array) {
   var sum = 0;
   for (var i = 0; i < array.length; i++) {
     sum += array[i];
   }
-  return sum;
+  return sum / array.length;
 }
