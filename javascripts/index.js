@@ -43,10 +43,17 @@ $(window).load(function () {
   var interval = setInterval(function() {
     analyser.getByteFrequencyData((frequencyData));
     var newSum = sumElementsIn(frequencyData) / spectrumLength;
-    console.log(newSum / 255)
     $('#metronome').css({
-      opacity : newSum / 255 + 0.2
+      height: 250 - (newSum / 255 * 250),
+      width: 250 - (newSum / 255 * 250)      
     })
+
+    $('#inner-metronome').css({
+      // opacity : newSum / 255 + 0.2
+      height:(newSum / 255 * 250),
+      width: (newSum / 255 * 250)      
+    })
+
     $bars.each(function (index, bar) {
       var $bar = $(bar);
       var amplitude = frequencyData[index];

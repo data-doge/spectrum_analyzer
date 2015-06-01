@@ -19,11 +19,18 @@ html, body {
 
 #metronome {
   position: relative;
-  height: 80px;
-  width: 80px;
   margin: 0 auto;
   top: 50%;
   transform: translateY(-50%);
   border-radius: 50%;
   background: white;
+}
+
+#inner-metronome {
+  position: relative;
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  background: black;
 }
