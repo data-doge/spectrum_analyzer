@@ -8,3 +8,4 @@ audio visualizer using javascript web audio api + soundcloud api
 - prettier alert message
 - suggested playlist sort of thing
 - multiple visualizers
+- support playlists
