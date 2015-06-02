@@ -11,6 +11,8 @@ SpectrumAnalyser.prototype.setup = function (audio) {
   this.analyser.fftSize = this.numOfFrequencyBands * 2;
   source.connect(this.analyser);
   this.analyser.connect(output);
+  alert('meow')
+  audio.play();
 };
 
 SpectrumAnalyser.prototype.renderFrequencyBands = function () {
@@ -41,5 +43,5 @@ SpectrumAnalyser.prototype.startAnalysis = function () {
         'background' : 'rgb(255,' + amp + ',46)'
       });
     });
-  }, 10);
+  }, 20);
 };
