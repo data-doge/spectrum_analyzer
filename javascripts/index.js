@@ -20,6 +20,7 @@ $(window).load(function () {
       } else {
         spectrumAnalyser.setupWith(audio);
         spectrumAnalyser.startAnalysis();
+        $('#tip').text('not playing? try another url.');
       }
       $('#soundcloud-form')[0].reset();
     }).fail(function (res) {

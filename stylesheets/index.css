@@ -53,7 +53,7 @@ h1 {
 
 footer {
   position: fixed;
-  bottom: 20px;
+  bottom: 0;
   width: 100%;
   text-align: center;
 }
@@ -71,5 +71,10 @@ input#soundcloud-url {
 }
 
 input:focus{
-    outline: 0;
+  outline: 0;
+}
+
+#tip {
+  font-size: 12px;
+  margin: 10px auto;  
 }
