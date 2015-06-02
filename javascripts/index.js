@@ -14,12 +14,14 @@ $(window).load(function () {
     }).done(function (res) {
       var streamUrl = res.stream_url + '?client_id=' + clientID;
       var audio = new Audio(streamUrl);
+      $('#title').text(res.title);
       if (spectrumAnalyser.audio) {
         spectrumAnalyser.changeSourceTo(audio);
       } else {
         spectrumAnalyser.setupWith(audio);
         spectrumAnalyser.startAnalysis();
       }
+      $('#soundcloud-form')[0].reset();
     }).fail(function (res) {
       alert('invalid url brah')
     });

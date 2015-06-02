@@ -1,11 +1,24 @@
 html, body {
-  position: relative;
+  position: fixed;
   height: 100%;
+  width: 100%;
+}
+
+body {
   background: black;
+  font-family: 'Lato';
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  font-weight: 300;
+  letter-spacing: 5px;
+  margin: 40px auto;
 }
 
 .bar-container {
-  position: absolute;
+  position: fixed;
   width: 1px;
   height: 100px;
 }
@@ -15,14 +28,17 @@ html, body {
   bottom: 0;
   width: 100%;
   height: 100%;
+  background: rgb(255,0,46);
 }
 
 #outer-metronome {
-  position: relative;
-  margin: 0 auto;
+  position: fixed;
+  left: 50%;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   border-radius: 50%;
+  height: 255px;
+  width: 255px;
   background: white;
 }
 
@@ -35,10 +51,25 @@ html, body {
   background: black;
 }
 
-form {
-  position: absolute;
-  top: 50%;
-  left: 50%;  
-  transform: translateX(-50%);
-  transform: translateY(-50%);
+footer {
+  position: fixed;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+input#soundcloud-url {
+  background: rgba(255,255,255,0.2);
+  border: none;
+  font-size: 12px;
+  height: 30px;
+  width: 420px;
+  text-align: center;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+
+input:focus{
+    outline: 0;
 }

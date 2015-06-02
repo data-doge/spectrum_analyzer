@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
-  <title>420</title>
+  <title>spectrum_analyzer</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="./stylesheets/normalize.css">
   <link rel="stylesheet" type="text/css" href="./stylesheets/index.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -10,11 +11,17 @@
 </head>
 
 <body>
+
+  <h1 id='title'></h1>
+
   <div id='outer-metronome'>
     <div id='inner-metronome'></div>
   </div>
-  <form id='soundcloud-form'>
-    <input id="soundcloud-url" type="text"><br>
-    <input type="submit">
-  </form>
+
+  <footer>
+    <form id='soundcloud-form'>
+      <input id="soundcloud-url" type="text" placeholder="paste a soundcloud url here and press enter">
+    </form>
+  </footer>
+
 </body>
