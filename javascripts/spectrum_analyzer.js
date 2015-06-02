@@ -2,18 +2,8 @@ function SpectrumAnalyser () {
   this.numOfFrequencyBands = 512;
   this.context = new AudioContext();
   this.frequencyData = new Uint8Array(this.numOfFrequencyBands);
+  this.output = this.context.destination;
 }
-
-SpectrumAnalyser.prototype.setup = function (audio) {
-  var source = this.context.createMediaElementSource(audio);
-  var output = this.context.destination;
-  this.analyser = this.context.createAnalyser();
-  this.analyser.fftSize = this.numOfFrequencyBands * 2;
-  source.connect(this.analyser);
-  this.analyser.connect(output);
-  alert('meow')
-  audio.play();
-};
 
 SpectrumAnalyser.prototype.renderFrequencyBands = function () {
   for (var i = 0; i < this.numOfFrequencyBands; i++) {
@@ -29,7 +19,19 @@ SpectrumAnalyser.prototype.renderFrequencyBands = function () {
   }
 };
 
+SpectrumAnalyser.prototype.setupWith = function (audio) {
+  this.audio = audio;
+  this.audio.crossOrigin = 'anonymous';
+  this.source = this.context.createMediaElementSource(this.audio);
+  this.output = this.context.destination;
+  this.analyser = this.context.createAnalyser();
+  this.analyser.fftSize = this.numOfFrequencyBands * 2;
+  this.source.connect(this.analyser);
+  this.analyser.connect(this.output);
+};
+
 SpectrumAnalyser.prototype.startAnalysis = function () {
+  this.audio.play();
   var self = this;
   var interval = setInterval(function() {
     self.analyser.getByteFrequencyData(self.frequencyData);
@@ -43,5 +45,35 @@ SpectrumAnalyser.prototype.startAnalysis = function () {
         'background' : 'rgb(255,' + amp + ',46)'
       });
     });
-  }, 20);
+  }, 30);
 };
+
+SpectrumAnalyser.prototype.changeSourceTo = function (audio) {
+  this.audio.pause();
+  this.audio = audio;
+  this.audio.crossOrigin = 'anonymous';
+  this.source = this.context.createMediaElementSource(this.audio);
+  this.source.connect(this.analyser);
+  this.audio.play();
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
