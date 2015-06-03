@@ -13,3 +13,4 @@ audio visualizer using javascript web audio api + soundcloud api
 - support playlists
 - color scheme options
 - share urls to send to other folx
+- load bar
